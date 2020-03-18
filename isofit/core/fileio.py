@@ -628,12 +628,15 @@ class IO:
 
             logging.debug('IO: Writing data_dump_file')
             x = state_est
+            xall = states
             Seps_inv, Seps_inv_sqrt = self.iv.calc_Seps(x, meas, geom)
             meas_est_window = meas_est[self.iv.winidx]
             meas_window = meas[self.iv.winidx]
             xa, Sa, Sa_inv, Sa_inv_sqrt = self.iv.calc_prior(x, geom)
             prior_resid = (x - xa).dot(Sa_inv_sqrt)
             rdn_est = self.fm.calc_rdn(x, geom)
+            rdn_est_all = s.array([self.fm.calc_rdn(xtemp, geom) for xtemp in states])
+            
             x_surface, x_RT, x_instrument = self.fm.unpack(x)
             Kb = self.fm.Kb(x, geom)
             xinit = invert_simple(self.fm, meas, geom)
@@ -655,7 +658,9 @@ class IO:
                 'prior_Cov': Sa,
                 'meas': meas,
                 'rdn_est': rdn_est,
+                'rdn_est_all': rdn_est_all,
                 'x': x,
+                'xall': xall,
                 'x_surface': x_surface,
                 'x_RT': x_RT,
                 'x_instrument': x_instrument,

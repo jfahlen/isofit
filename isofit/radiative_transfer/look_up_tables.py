@@ -149,5 +149,5 @@ class TabularRT:
 
         if len(x_RT) < 1:
             return ''
-        return 'Atmosphere: '+' '.join(['%5.3f' % xi for xi in x_RT])
+        return 'Atmosphere: '+' '.join(['%s: %5.3f' % (si, xi) for si, xi in zip(self.statevec,x_RT)])
 
