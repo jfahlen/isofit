@@ -572,6 +572,11 @@ class IO:
                                                        self.fm.RT, self.fm.instrument, x_surface, x_RT,
                                                        x_instrument, meas, geom)
             rhoatm, sphalb, transm, solar_irr, coszen, transup = coeffs
+
+            L_atm = self.fm.RT.get_L_atm(x_RT, geom)
+            L_down = self.fm.RT.get_L_down(x_RT, geom)
+            L_up = self.fm.RT.get_L_up(x_RT, geom)
+
             atm = s.column_stack(list(coeffs[:4]) +
                                  [s.ones((len(wl), 1)) * coszen])
 
@@ -680,7 +685,10 @@ class IO:
                 'rhoatm': rhoatm,
                 'sphalb': sphalb,
                 'transm': transm,
-                'solar_irr': solar_irr
+                'solar_irr': solar_irr,
+                'L_atm': L_atm,
+                'L_down': L_down,
+                'L_up': L_up
             }
             s.io.savemat(self.output['data_dump_file'], mdict)
 

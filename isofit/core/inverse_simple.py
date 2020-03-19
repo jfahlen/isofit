@@ -175,7 +175,7 @@ def invert_simple(forward, meas, geom):
     # possibly complex for more sophisticated parameterizations (e.g. mixture
     # models, etc.)
 
-    x[forward.idx_surface] = forward.surface.fit_params(rfl_est, Ls_est, geom)
+    x[forward.idx_surface] = forward.surface.fit_params(meas, rfl_est, Ls_est, geom)
     geom.x_surf_init = x[forward.idx_surface]
     geom.x_RT_init = x[forward.idx_RT]
     return x

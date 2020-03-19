@@ -168,9 +168,9 @@ class Inversion:
         # Calculate the initial solution, if needed.
         x0 = invert_simple(self.fm, meas, geom)
 
-        x0[(self.fm.statevec).index('H2OSTR')] = 0.6
-        x0[223:223+256] = 0.05
-        x0[223+256] = 310.
+        #x0[(self.fm.statevec).index('H2OSTR')] = 0.6
+        x0[223:223+256] = 0.02
+        #x0[223+256] = 310.
 
         # Catch any instances outside of bounds
         lower_bound_violation = x0 < self.fm.bounds[0]

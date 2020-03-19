@@ -21,6 +21,7 @@
 import scipy as s
 from scipy.linalg import inv
 from scipy.optimize import minimize
+import pdb
 
 from ..core.common import emissive_radiance, eps
 from .surface_multicomp import MultiComponentSurface
@@ -36,7 +37,7 @@ class ThermalSurface(MultiComponentSurface):
         MultiComponentSurface.__init__(self, config)
         # Handle additional state vector elements
         self.statevec.extend(['SURF_TEMP_K'])
-        self.init.extend([293.0])  # Room temperature
+        self.init.extend([300.0])  # Room temperature
         self.scale.extend([100.0])
         self.bounds.extend([[250.0, 400.0]])
         self.surf_temp_ind = len(self.statevec)-1
@@ -57,19 +58,26 @@ class ThermalSurface(MultiComponentSurface):
         """Covariance of prior distribution, calculated at state x."""
 
         Cov = MultiComponentSurface.Sa(self, x_surface, geom)
-        t = s.array([[(10.0 * self.scale[self.surf_temp_ind])**2]])
+        t = s.array([[(0.0002 * self.scale[self.surf_temp_ind])**2]])
+        t = s.array([[0.1]])
         Cov[self.surf_temp_ind, self.surf_temp_ind] = t
         return Cov
 
-    def fit_params(self, rfl_meas, Ls, geom):
+    def fit_params(self, meas, rfl_meas, Ls, geom):
         """Given a reflectance estimate and one or more emissive parameters, 
           fit a state vector."""
 
         def err(z):
             T = z
-            emissivity = s.ones(self.n_wl, dtype=float)
-            Ls_est, d = emissive_radiance(emissivity, T, self.wl)
-            resid = Ls_est - Ls
+            #emissivity = s.ones(self.n_wl, dtype=float)
+            #Ls_est, d = emissive_radiance(emissivity, T, self.wl)
+            #resid = Ls_est - Ls
+            #return sum(resid**2)
+            emissivity = 1.00
+            #ind = 367  # 10.160 um
+            ind = 370
+            Ls_est, d = emissive_radiance(emissivity, T, self.wl[ind])
+            resid = 0.828*Ls_est - (meas[ind] - 0.06)
             return sum(resid**2)
 
         x_surface = MultiComponentSurface.fit_params(self, rfl_meas, Ls, geom)
@@ -77,6 +85,9 @@ class ThermalSurface(MultiComponentSurface):
         T = max(self.bounds[self.surf_temp_ind][0]+eps,
                 min(T, self.bounds[self.surf_temp_ind][1]-eps))
         x_surface[self.surf_temp_ind] = T
+        self.init[self.surf_temp_ind] = T
+
+#        x_surface[self.surf_temp_ind] = self.init[self.surf_temp_ind]
         return x_surface
 
     def conditional_solrfl(self, rfl_est, geom):

@@ -481,3 +481,68 @@ class ModtranRT(TabularRT):
 
                 for w, v, wn in zip(ws, vs, wns):
                     fout.write(' %9.4f %9.7f %9.2f\n' % (w, v, wn))
+
+def load_chn_copy(infile, coszen):
+    """Load a '.chn' output file and parse critical coefficient vectors. 
+
+        These are:
+            wl      - wavelength vector
+            sol_irr - solar irradiance
+            sphalb  - spherical sky albedo at surface
+            transm  - diffuse and direct irradiance along the 
+                        sun-ground-sensor path
+            transup - transmission along the ground-sensor path only 
+
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            Be careful with these! They are to be used only by the modtran_tir functions because
+            MODTRAN must be run with a reflectivity of 1 for them to be used in the RTM defined
+            in radiative_transfer.py.
+            thermal_upwelling - atmospheric path radiance
+            thermal_downwelling - sky-integrated thermal path radiance reflected off the ground
+                                and back into the sensor.
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        We parse them one wavelength at a time."""
+
+    with open(infile) as f:
+        sols, transms, sphalbs, wls, rhoatms, transups = [], [], [], [], [], []
+        rdnatms = []
+        thermal_upwellings, thermal_downwellings = [], []
+        lines = f.readlines()
+        for i, line in enumerate(lines):
+            if i < 5:
+                continue
+            toks = line.strip().split(' ')
+            toks = re.findall(r"[\S]+", line.strip())
+            wl, wid = float(toks[0]), float(toks[8])  # nm
+            solar_irr = float(toks[18]) * 1e6 * \
+                s.pi / wid / coszen  # uW/nm/sr/cm2
+            rdnatm = float(toks[4]) * 1e6  # uW/nm/sr/cm2
+            rhoatm = rdnatm * s.pi / (solar_irr * coszen)
+            sphalb = float(toks[23])
+            transm = float(toks[22]) + float(toks[21])
+            transup = float(toks[24])
+
+            # Be careful with these! See note in function comments above
+            thermal_emission = float(toks[11])
+            thermal_scatter = float(toks[12])
+            thermal_upwelling = (thermal_emission + thermal_scatter) / wid * 1e6  # uW/nm/sr/cm2
+
+            # Be careful with these! See note in function comments above
+            grnd_rflt = float(toks[16])
+            thermal_downwelling = grnd_rflt / wid * 1e6  # uW/nm/sr/cm2
+
+            sols.append(solar_irr)
+            transms.append(transm)
+            sphalbs.append(sphalb)
+            rhoatms.append(rhoatm)
+            transups.append(transup)
+            rdnatms.append(rdnatm)
+
+            thermal_upwellings.append(thermal_upwelling)
+            thermal_downwellings.append(thermal_downwelling)
+
+            wls.append(wl)
+    params = [s.array(i) for i in
+                [wls, sols, rhoatms, transms, sphalbs, transups, thermal_upwellings, thermal_downwellings]]
+    return tuple(params), s.array(rdnatms)
