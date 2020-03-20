@@ -63,6 +63,7 @@ class RadiativeTransfer():
                     temp_lut_grid[local_lut_name] = self.lut_grid[local_lut_name]
                 local_config["lut_grid"] = temp_lut_grid
 
+                # copy statevector into local config
                 for local_sv_name in local_config['statevector_names']:
                     temp_statevec[local_sv_name] = config_statevector[local_sv_name]
                 local_config["statevector"] = temp_statevec
@@ -141,7 +142,7 @@ class RadiativeTransfer():
         L_down = self.get_L_down(x_RT, geom)
 
         L_up = self.get_L_up(x_RT, geom)
-        L_up = L_up + Ls * r['transm']
+        L_up = L_up + Ls * r['transup']
 
         ret = L_atm + \
             L_down * rfl * r['transm'] / (1.0 - r['sphalb'] * rfl) + \
