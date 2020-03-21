@@ -73,12 +73,12 @@ class Inversion:
         # Configure Levenberg-Marquardt
         self.least_squares_params = {
             'method': 'trf',
-            'max_nfev': 20,
+            'max_nfev': 100,
             'bounds': (self.fm.bounds[0]+eps, self.fm.bounds[1]-eps),
             'x_scale': self.fm.scale,
-            'xtol': 1e-4,
-            'ftol': 1e-4,
-            'gtol': 1e-4,
+            'xtol': 1e-6,
+            'ftol': 1e-6,
+            'gtol': 1e-6,
             'tr_solver': 'exact'
         }
 
@@ -168,9 +168,13 @@ class Inversion:
         # Calculate the initial solution, if needed.
         x0 = invert_simple(self.fm, meas, geom)
 
+        # The H2OSTR initialization from the config seems to be ignored as it is
+        # set in invert_simple() above. This is in case you want to force a starting
+        # value.
         #x0[(self.fm.statevec).index('H2OSTR')] = 0.6
+
+        # This needs to be replaced with the conditional emissivity
         x0[223:223+256] = 0.02
-        #x0[223+256] = 310.
 
         # Catch any instances outside of bounds
         lower_bound_violation = x0 < self.fm.bounds[0]

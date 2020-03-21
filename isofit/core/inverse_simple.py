@@ -175,7 +175,22 @@ def invert_simple(forward, meas, geom):
     # possibly complex for more sophisticated parameterizations (e.g. mixture
     # models, etc.)
 
-    x[forward.idx_surface] = forward.surface.fit_params(meas, rfl_est, Ls_est, geom)
+    # Estimate the total radiance at the sensor leaving out the surface emission
+    rfl_guess = 0.04  # Guess the surface emissivity, should be conditional emissivity?
+    rhoatm, sphalb, transm, solar_irr, coszen, transup = coeffs
+    L_atm = RT.get_L_atm(x_RT, geom)
+    L_down = RT.get_L_down(x_RT, geom)
+    L_total_without_surface_emission = L_atm + L_down * rfl_guess * transm / (1. - sphalb * rfl_guess)
+    clearest_wavelengths = [8304.61, 8375.99, 8465.06, 8625., 8748.78, 8872.20, 8960.40, 10125.,
+                            10390.00, 10690.00]
+    
+    # This is fragile if other instruments have different wavelength spacing or range
+    clearest_indices = [s.argmin(s.absolute(RT.wl - w)) for w in clearest_wavelengths]
+
+    # This function call is a bit of a mess
+    x[forward.idx_surface] = forward.surface.fit_params(meas, rfl_est,
+        L_total_without_surface_emission, transup, clearest_indices, geom)
+
     geom.x_surf_init = x[forward.idx_surface]
     geom.x_RT_init = x[forward.idx_RT]
     return x
