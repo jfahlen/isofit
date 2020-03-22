@@ -331,3 +331,20 @@ def combos(inds):
     n = len(inds)
     cases = np.prod([len(i) for i in inds])
     return np.array(np.meshgrid(*inds)).reshape((n, cases)).T
+
+
+def conditional_gaussian(mu, C, window, remain, x):
+    """Define the conditional Gaussian distribution for convenience.
+    "remain" contains indices of the observed part x1. "window"
+    contains all other indices, 
+    such that len(window)+len(remain)=len(x)
+    """
+    C11 = np.array([C[i,remain] for i in remain])
+    C12 = np.array([C[i,window] for i in remain])
+    C21 = np.array([C[i,remain] for i in window])
+    C22 = np.array([C[i,window] for i in window])
+    Cinv = scipy.linalg.inv(C11)
+    conditional_mean = mu[window] + C21 @ Cinv @ (x-mu[remain]) 
+    conditional_Cov = C22 - C21 @ Cinv @ C12
+    return conditional_mean, conditional_Cov
+
