@@ -161,26 +161,26 @@ class MultiComponentSurface(Surface):
         Cov = Cov * (self.norm(lamb_ref)**2)
 
 ##########################################################33
-        tir_idx = np.where(self.wl > 3000)[0]
-        tir_sl = slice(tir_idx[0], tir_idx[-1]+1)
-        vswir_idx = np.where(self.wl < 3000)[0]
-        vswir_sl = slice(vswir_idx[0], vswir_idx[-1]+1)
+        #tir_idx = np.where(self.wl > 3000)[0]
+        #tir_sl = slice(tir_idx[0], tir_idx[-1]+1)
+        #vswir_idx = np.where(self.wl < 3000)[0]
+        #vswir_sl = slice(vswir_idx[0], vswir_idx[-1]+1)
 
-        # Gaussian band diagonal with diagonal loading in TIR only, cross blocks 0
-        width = 30
-        refl_gauss = 0.05
-        refl_diag = 0.001
-        #refl_gauss = 0.00000005
-        #refl_diag = 0.00000001
-        Cov[tir_sl, vswir_sl] = 0.
-        Cov[vswir_sl, tir_sl] = 0.
-        x = np.arange(len(tir_idx)).astype(float)
-        for i in tir_idx:
-            off = i - tir_idx[0]
-            f = np.exp(-0.5*(x-off)**2 / width**2)
-            #Cov[tir_sl, i] = f * Cov[tir_sl, i]
-            Cov[tir_sl, i] = f 
-        Cov[tir_sl, tir_sl] = refl_gauss**2 * Cov[tir_sl, tir_sl]  + refl_diag**2 * np.diag(np.ones(len(tir_idx)))
+        ## Gaussian band diagonal with diagonal loading in TIR only, cross blocks 0
+        #width = 30
+        #refl_gauss = 0.05
+        #refl_diag = 0.001
+        ##refl_gauss = 0.00000005
+        ##refl_diag = 0.00000001
+        #Cov[tir_sl, vswir_sl] = 0.
+        #Cov[vswir_sl, tir_sl] = 0.
+        #x = np.arange(len(tir_idx)).astype(float)
+        #for i in tir_idx:
+        #    off = i - tir_idx[0]
+        #    f = np.exp(-0.5*(x-off)**2 / width**2)
+        #    #Cov[tir_sl, i] = f * Cov[tir_sl, i]
+        #    Cov[tir_sl, i] = f 
+        #Cov[tir_sl, tir_sl] = refl_gauss**2 * Cov[tir_sl, tir_sl]  + refl_diag**2 * np.diag(np.ones(len(tir_idx)))
 
 ##########################################################33
 
