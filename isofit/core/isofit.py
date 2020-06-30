@@ -82,6 +82,11 @@ class Isofit:
                    'redis_password': self.config.implementation.redis_password,
                    'local_mode': self.config.implementation.n_cores == 1}
 
+        # only specify a temporary directory if we are not connecting to 
+        # a ray cluster
+        if rayargs['local_mode']:
+            rayargs['temp_dir'] = self.config.implementation.ray_temp_dir
+
         # We can only set the num_cpus if running on a single-node
         if self.config.implementation.ip_head is None and self.config.implementation.redis_password is None:
             rayargs['num_cpus'] = self.config.implementation.n_cores
