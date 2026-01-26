@@ -1,41 +1,36 @@
-=================
 Data and Examples
 =================
 
-.. contents:: Table of Contents
-    :depth: 2
-
 To get started with ISOFIT examples, simply execute the two following commands:
 
-.. code-block::
+```
+$ isofit download all
+$ isofit build
+```
 
-    $ isofit download all
-    $ isofit build
+The first will download all additional ISOFIT dependencies and configure them for the current system. The second will build the ISOFIT examples using the configured dependencies. From there, examples will be available under `~/.isofit/examples/`. Each subdirectory will have one or more scripts that are prepared for execution.
 
-The first will download all additional ISOFIT dependencies and configure them for the current system.
-The second will build the ISOFIT examples using the configured dependencies.
-From there, examples will be available under ``~/.isofit/examples/``.
-Each subdirectory will have one or more scripts that are prepared for execution.
+<blockquote style="border-left: 5px solid lightblue; padding: 0.5em 1em; margin: 1em 0;">
 
-.. note::
+:information_source: Commonly useful options `-b [path]`, `--base [path]` will set the download location for all products:
 
-  A commonly useful option ``-b [path]``, ``--base [path]`` will set the download location for all products:
+```
+$ isofit -b extra-downloads/ download all
 
-  .. code-block::
+This will change the download directory from the default
+```
 
-      $ isofit -b extra-downloads/ download all
+</blockquote>
 
-  This will change the download directory from the default ``~`` to ``./extra-downloads/``
+<blockquote style="border-left: 5px solid yellow; padding: 0.5em 1em; margin: 1em 0;">
 
-.. note::
+:warning: If on MacOS, executing the `make` command may fail if the user hasn't agreed to the Xcode and Apple SDKs license yet. In these cases, it may be required to run the following command in order to compile the programs that use it (6S, LibRadTran):
+```
+$ sudo xcodebuild -license
+```
 
-  If on MacOS, executing the ``make`` command may fail if the user hasn't agreed to the Xcode and Apple SDKs license yet. In these cases, it may be required to run the following command in order to compile the programs that use it (6S, LibRadTran):
+</blockquote>
 
-  .. code-block::
-
-      $ sudo xcodebuild -license
-
-  This will change the download directory from the default ``~`` to ``./extra-downloads/``
 
 If there are any issues, please report them to the `ISOFIT repository <https://github.com/isofit/isofit/issues>`_.
 

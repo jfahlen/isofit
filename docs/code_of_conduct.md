@@ -4,9 +4,7 @@ Code of Conduct
 Our Pledge
 ----------
 
-In the interest of fostering an open and welcoming environment, we as
-contributors and maintainers pledge to making participation in our project and
-our community a positive experience for everyone.
+In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a positive experience for everyone.
 
 Our Standards
 -------------
