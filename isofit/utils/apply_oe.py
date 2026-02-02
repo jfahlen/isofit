@@ -810,6 +810,7 @@ def apply_oe(
         config_params["pressure_elevation"] = pressure_elevation
         if retrieve_co2:
             config_params["co2_lut_grid"] = lut_params.co2_range
+            config_params["retrieve_co2"] = True
 
         tmpl.build_config(
             h2o_lut_grid=h2o_lut_grid,
