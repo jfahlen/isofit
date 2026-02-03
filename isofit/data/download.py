@@ -322,7 +322,7 @@ def pullFromRepo(owner, repo, tag, output, version=True, overwrite=False):
     avail : pathlib.Path
         Available path
     """
-    metadata = release_metadata("isofit", "6S", tag)
+    metadata = release_metadata(owner, repo, tag)
 
     print(f"Pulling release {metadata['tag_name']}")
     zipfile = download_file(metadata["zipball_url"], output.parent / f"{repo}.zip")
