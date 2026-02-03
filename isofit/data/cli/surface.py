@@ -11,12 +11,10 @@ from packaging.version import Version
 
 from isofit.data import env, shared
 from isofit.data.download import (
-    download_file,
     isUpToDateGithub,
     prepare_output,
     pullFromRepo,
     release_metadata,
-    unzip,
 )
 
 ESSENTIAL = False
@@ -39,7 +37,7 @@ def download(path=None, tag="latest", overwrite=False, **_):
         Ignores unused params that may be used by other validate functions. This is to
         maintain compatibility with other functions
     """
-    print(f"Downloading ISOFIT surface")
+    print("Downloading ISOFIT surface")
 
     output = prepare_output(path, env.surface, overwrite=overwrite)
     if not output:
