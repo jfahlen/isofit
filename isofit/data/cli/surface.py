@@ -114,61 +114,6 @@ def validate(path=None, checkForUpdate=True, debug=print, error=print, **_):
     return True
 
 
-def isUpToDate(path=None, tag="latest", debug=print, error=print, **_):
-    """
-    Checks the installed version against the latest release
-
-    Parameters
-    ----------
-    path : str, default=None
-        Path to update. If None, defaults to the ini path
-    debug : function, default=print
-        Print function to use for debug messages, eg. logging.debug
-    error : function, default=print
-        Print function to use for error messages, eg. logging.error
-    **_ : dict
-        Ignores unused params that may be used by other validate functions. This is to
-        maintain compatibility with other functions
-
-    Returns
-    -------
-    bool
-        True if the path is up to date, False otherwise
-
-    Notes
-    -----
-    The Github workflows watch for the string "[x]" to determine if the cache needs to
-    update the data of this module. If your module does not include this string, the
-    workflows will never detect updates.
-    """
-    if path is None:
-        path = env.surface
-
-    debug(f"Checking for updates for surface on path: {path}")
-
-    latest = Version(release_metadata("emit-sds", "emit-sds-l2a", "latest")["tag_name"])
-    current = Version(importlib.metadata.version("surface"))
-
-    file = Path(path) / "version.txt"
-    if not file.exists():
-        error(
-            "[x] Failed to find a version.txt file under the given path. Version is unknown"
-        )
-        return False
-
-    metadata = release_metadata("emit-sds", "emit-sds-l2a", tag)
-    with open(file, "r") as f:
-        current = f.read()
-
-    if current != (latest := metadata["tag_name"]):
-        error(f"[x] Latest is {latest}, currently installed is {current}")
-        return False
-
-    debug(f"[OK] Path is up to date, current version is: {current}")
-
-    return True
-
-
 def update(check=False, **kwargs):
     """
     Checks for an update and executes a new download if it is needed
