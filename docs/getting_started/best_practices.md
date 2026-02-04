@@ -4,7 +4,7 @@ ISOFIT is highly configurable. This provides a great deal of design flexibility 
 
 <blockquote style="border-left: 5px solid lightblue; padding: 0.5em 1em; margin: 1em 0;" markdown="1">
 
-:information_source: The below commands configurations reference extra ISOFIT data files and their default locations. Please refer to [data](data.md) on how to download these.
+:information_source: The below commands configurations reference extra ISOFIT data files and their default locations. Please refer to [data](../extra_downloads/data.md) on how to download these.
 
 </blockquote>
 

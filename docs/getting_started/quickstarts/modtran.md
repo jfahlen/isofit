@@ -20,4 +20,4 @@ Ray may have compatibility issues with older machines with glibc < 2.14.
 
 # Additional Installation Info for Developers
 
-Be sure to read the [contributing](contributing.md) page as additional installation steps must be performed.
+Be sure to read the [contributing](../../developers/contributing.md) page as additional installation steps must be performed.

@@ -23,7 +23,7 @@ $ isofit -b extra-downloads/ download all
 
 This will change the download directory from the default `~` to `./extra-downloads/`
 
-See [data](data.md) for more information.
+See [data](../../extra_downloads/data.md) for more information.
 
 </blockquote>
 

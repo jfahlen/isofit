@@ -107,7 +107,7 @@ $ uv sync
 
 # Downloading Extra Files
 
-Once ISOFIT is installed, the CLI provides an easy way to download additional files that may be useful. These can be acquired via the `isofit download` command, and the current list of downloads we support is available via `isofit download --help`. See [data](data.md) for more information.
+Once ISOFIT is installed, the CLI provides an easy way to download additional files that may be useful. These can be acquired via the `isofit download` command, and the current list of downloads we support is available via `isofit download --help`. See [data](../extra_downloads/data.md) for more information.
 
 <blockquote style="border-left: 5px solid lightblue; padding: 0.5em 1em; margin: 1em 0;" markdown="1">
 
