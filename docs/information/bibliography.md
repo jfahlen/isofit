@@ -1,13 +1,11 @@
-Bibliography
-============
+# Bibliography
 
 Considerable effort by many individuals has gone into the development of optimal
 estimation for imaging spectroscopy, and *Isofit* specifically.  Below are a list
 of some of the key work.  If you use *Isofit* in your work, we would appreciate
 your consideration of the relevant contributions.
 
-Core Developments
------------------
+## Core Developments
 
 D. R. Thompson, V. Natraj, R. O. Green, M. Helmlinger, B.-C. Gao, and M. L. Eastwood. [Optimal Estimation for Imaging Spectrometer Atmospheric Correction.](https://doi.org/10.1016/j.rse.2018.07.003). *Remote Sensing of Environment* 216, p. 355-373, 2018. DOI: 10.1016/j.rse.2018.07.003.
 
@@ -15,8 +13,8 @@ D. R. Thompson, K.N. Babu, A. Braverman, M. Eastwood, R.O. Green, J. Hobbs, J.B.
 
 D. R. Thompson, K. Cawse-Nicholson, Z. Erickson, C. Fichot, C. Frankenberg, B-C. Gao, M. M. Gierach, R. O. Green, D. Jensen, V. Natraj, A. Thompson. [A unified approach to estimate land and water reflectances with uncertainties for coastal imaging spectroscopy](https://doi.org/10.1016/j.rse.2019.05.017). *Remote Sensing of Environment*, 231, 111198, 2019. DOI: 10.1016/j.rse.2019.05.017.
 
-Uncertainty Quantification
---------------------------
+## Uncertainty Quantification
+
 D. R. Thompson, Alberto Candela, Nimrod Carmon, Roger N. Clark, David Connelly, Bethany Ehlmann, Robert O. Green, Raymond Kokaly, Nathalie Mahowald, Gregory Okin, Gregg A. Swayze, Michael Turmon, and David S. Wettergreen. [Quantifying Uncertainty for Remote Spectroscopy of Surface Composition](https://doi.org/10.1016/j.rse.2020.111898). *Remote Sensing of Environment*, 247:15, 111898, 2020. DOI: 10.1016/j.rse.2020.111898.
 
 N. Carmon, D. R. Thompson, N. Bohn, J. I. Susiluoto, M. J. Turmon, P. G. Brodrick, D. S.Connelly, A.J. Braverman, K. Cawse-Nicholson, R. O. Green, and M. R. Gunson. [Uncertainty quantification for a global imaging spectroscopy surface composition investigation](https://doi.org/10.1016/j.rse.2020.112038). *Remote Sensing of Environment*, 251, 2020. DOI: 10.1016/j.rse.2020.112038.
@@ -25,8 +23,8 @@ D. R. Thompson, N. Bohn, A. Braverman, P. G. Brodrick, N. Carmon, M. L. Eastwood
 
 K. M. Leung, D. R. Thompson, J. Susiluoto, J. Jagalur-Mohan, A. Braverman, Y. Marzouk (2023). [Evaluating the accuracy of Gaussian approximations in VSWIR imaging spectroscopy retrievals](https://doi.org/10.48550/arXiv.2308.11495). ArXiV preprint, 2023. https://doi.org/10.48550/arXiv.2308.11495
 
-Extensions
-----------
+## Extensions
+
 R. Frouin, B.  Franz, A. Ibrahim, K. Knobelspiesse, Z. Ahmad, B. Cairns, J. Chowdhary, H. M. Dierssen, O. Dubovik, J. Tan, A. B. Davis, D. J. Diner, O. Kalashnikova, D. R. Thompson, L. R. Remer, E. Boss, O. Coddington, B-C Gao, L. Gross, O. Hasekamp, A. Omar, B. Pelletier, D. Ramon, P-W. Zhai. [Atmospheric correction of satellite ocean-color imagery during the PACE era](https://doi.org/10.3389/feart.2019.00145). *Frontiers in Marine Science*, 7: 145, 2019. DOI: 10.3389/feart.2019.00145.
 
 B. D. Bue, D. R. Thompson, S. Deshpande, M. Eastwood, C. Fichot, R. O. Green, T. Mullen, V. Natraj, and M. Parente. [Neural Network Radiative Transfer for Imaging Spectroscopy](https://doi.org/10.5194/amt-12-2567-2019).  *Atmospheric Measurement Techniques*, 12, 2567–2578, 2019. DOI: 10.5194/amt-12-2567-2019.
@@ -39,8 +37,7 @@ R. Eckert, S. Mauceri, D. R. Thompson, J. Fahlen, P. G. Brodrick. [Spatially con
 
 J. E. Fahlen,  Brodrick, P.G., Thompson, D.R., Herman, R.L., Hulley, G., Cawse-Nicholson, K., Green, R.O., Green, J.J., Hook, S.J. and Miller, C.E., 2021. [Joint VSWIR-TIR retrievals of earth's surface and atmosphere](https://doi.org/10.1016/j.rse.2021.112727). Remote Sensing of Environment, 267, p.112727.  DOI: 10.1016/j.rse.2021.112727
 
-Applications
-------------
+## Applications
 
 P. R. Nelson, A. J. Maguire, Z. Pierrat, E. L. Orcutt, et al. (2022) [Remote Sensing of Tundra Ecosystems Using High Spectral Resolution Reflectance: Opportunities and Challenges](https://doi.org/10.1029/2021JG006697). *Journal of Geophysical Research - Biogeosciences*. doi: 10.1029/2021JG006697.
 

@@ -1,5 +1,4 @@
-Contributing
-============
+# Contributing
 
 Thank you for your interest in contributing to ISOFIT! If you are just getting
 started, please review the guidelines below to understand how and where you can
@@ -16,8 +15,7 @@ at the addresses given below, and we can coordinate efforts.  Our general policy
 is to for the maintainers to delegate technical authority to individuals to make
 changes and additions to specific topics.
 
-Getting Started
----------------
+## Getting Started
 
 First of all, to get a sense of the project's current status and roadmap, please
 be sure to spend some time reviewing issues in the [issue tracker](https://github.com/isofit/isofit/issues).
@@ -25,9 +23,7 @@ be sure to spend some time reviewing issues in the [issue tracker](https://githu
 If you have have discovered a new issue or task, then go ahead and create a [new
 issue](https://github.com/isofit/isofit/issues/new).
 
-
-Fork and Create a Branch
-------------------------
+## Fork and Create a Branch
 
 ISOFIT follows the [Standard Fork and Pull Request](https://gist.github.com/Chaser324/ce0505fbed06b947d962) workflow.
 
@@ -41,8 +37,7 @@ example, if you are working on issue #314 you would run:
 $ git checkout -b 314-update-docs-libradtran
 ```
 
-Testing
--------
+## Testing
 
 Tests live in `isofit/tests/` and are executed using [pytest](https://pytest.org).
 
@@ -53,8 +48,9 @@ $ cd $(isofit path examples)/20171108_Pasadena
 $ ./modtran.sh
 ```
 
-Debug
------
+See [Testing](testing.md) for more information.
+
+## Debug
 
 ISOFIT uses [ray](https://www.ray.io/) as the multiprocessing backend; however, this package can be unstable for some systems and difficult to develop with. As such, ISOFIT has a debug mode that can be activated via the `ISOFIT_DEBUG` environment variable.
 
@@ -63,13 +59,11 @@ This enables complete circumvention of ray while supporting ray-like syntax in t
 
 To enable, set the environment variable `ISOFIT_DEBUG` to any value before runtime. For example:
 
-.. code::
 ```
 $ ISOFIT_DEBUG=1 isofit run ...
 ```
 
-A Note About Style
-------------------
+## A Note About Style
 
 We use [Black](https://github.com/psf/black) and [isort](https://github.com/PyCQA/isort) to maintain style consistency. These are included via [pre-commit](https://pre-commit.com) and should be installed once ISOFIT is installed. To do so, simply run:
 
@@ -82,8 +76,7 @@ Any PRs failing this check will be rejected by the maintainers until it is passi
 
 If you must apply Black manually, you must first `pip install black` and then run `black isofit` from the root of the repository.
 
-Implement Your Changes and Create a Pull Request
-------------------------------------------------
+## Implement Your Changes and Create a Pull Request
 
 At this point, you are ready to implement your changes!
 
@@ -107,8 +100,7 @@ $ git push --set-upstream origin 314-update-docs-libradtran
 
 When you are ready to submit your changes back to the ISOFIT repo, go to GitHub and make a [Pull Request](https://help.github.com/articles/creating-a-pull-request/).
 
-Keeping your Pull Request Updated
----------------------------------
+## Keeping your Pull Request Updated
 
 If a maintainer asks you to "rebase" your PR, they're saying that a lot of code has changed, and that you need to update your branch so it's easier to merge.
 
@@ -120,8 +112,7 @@ $ git pull --rebase upstream dev
 $ git push --force-with-lease 314-update-docs-libradtran
 ```
 
-Project Decision Making
------------------------
+## Project Decision Making
 
 Minor changes follow an expedited acceptance process.  These are things like:
 
@@ -146,8 +137,7 @@ Major changes include:
 
 These are accepted through consensus of a quorum of maintainers.  **If you would like to include any new algorithms or examples, we highly recommend that they are supported by peer reviewed scientific research.**
 
-Release Steps (for Maintainers)
--------------------------------
+## Release Steps (for Maintainers)
 
 Releases should trigger a new PyPi upload, and subsequently a fresh upload to conda-forge.  Therefore,
 the revised steps for versioning are:
@@ -160,8 +150,7 @@ the revised steps for versioning are:
 * Enter tag version as "v3.8.0" (depending on latest version), and input release title and description
 * Click "Publish release"
 
-Updating uv.lock (for Maintainers)
-----------------------------------
+## Updating uv.lock (for Maintainers)
 
 The uv.lock file maintains the pinned versions of every dependency for all supported python versions in order to ensure environment reproducibility.
 This file should be occasionally updated to retrieve dependency updates.
@@ -178,8 +167,7 @@ Additionally:
 * If a package needs to added or removed from the toml file, use `uv [add|remove] <package>`. Commit the toml and follow the above.
 * If changing the `requires-python` field of the toml file, manually do so then follow the above to ensure all dependencies are compatible.
 
-Contributors
-------------
+## Contributors
 
 The github maintainers, responsible for handling pull requests, are:
 

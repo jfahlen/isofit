@@ -6,34 +6,36 @@ theme:
   name: readthedocs
 plugins:
   - search
+  - mkapi
 markdown_extensions:
   - attr_list
+  - md_in_html
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: "#"
+      baselevel: 2
+extra_css:
+  - stylesheets/icons.css
 nav:
+  - About: about.md
   - Getting Started:
-    - About: about
-    - Installation: installation
-    - Quick Start (New Users): installation#quick-start-with-srtmnet-recommended-for-new-users
-    - Data: data
-    - Extra Downloads: data#extra-downloads
-    - Configuration Options: data#configuration-options
-    - Downloads: data#downloads
-    - Developers: data#developers
-    - Best Practices: best_practices
+    - Installation: getting_started/installation.md
+    - Quick Start (New Users): getting_started/quickstarts/srtmnet.md
+    - MODTRAN: getting_started/quickstarts/modtran.md
+    - Best Practices: getting_started/best_practices.md
+  - Extra Downloads:
+    - Dependencies: extra_downloads/data.md
+    - Building Examples: extra_downloads/building_examples.md
   - Tutorials: https://isofit.github.io/isofit-tutorials
-  - Docker:
-    - Tags: docker
-    - Getting Started: docker#getting-started
-    - Jupyter: docker#jupyter
-    - Slim: docker#slim
+  - Docker: docker.md
   - Information:
-    - Bibliography: bibliography
-    - Code of Conduct: code_of_conduct
+    - Bibliography: information/bibliography.md
+    - Code of Conduct: information/code_of_conduct.md
   - Developers:
-    - Contributing: CONTRIBUTING
-    - Documentation: documentation
-    - Profiling: profiling
-  - API:
-    - API Reference: https://isofit.readthedocs.io/en/latest/autoapi/index#
+    - Contributing: developers/contributing.md
+    - Documentation: developers/documentation.md
+    - Profiling: developers/profiling.md
+  - Reference:
+    - $api/isofit.***
