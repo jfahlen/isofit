@@ -31,7 +31,7 @@ $ pytest -m slow
 
 <blockquote style="border-left: 5px solid lightblue; padding: 0.5em 1em; margin: 1em 0;" markdown="1">
 
-:information_source: You may see an <span style="color: yellow">X</span> for some test cases. These are *expected* failures and are considered as a **pass**
+:information_source: You may see an <span style="color: yellow; background: black">x</span> for some test cases. These are *expected* failures and are considered as a **pass**
 
 </blockquote>
 
