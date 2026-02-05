@@ -775,7 +775,7 @@ def build_config(
         vswir["irradiance_file"] = paths.irradiance_file
         vswir["engine_base_dir"] = paths.sixs_path
         if multipart_transmittance:
-            vswir["emulator_aux_file"] = emulator_base
+            vswir["emulator_aux_file"] = abspath(emulator_base)
         else:
             vswir["emulator_aux_file"] = abspath(
                 os.path.splitext(emulator_base)[0] + "_aux.npz"
