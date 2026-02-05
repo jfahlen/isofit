@@ -29,6 +29,7 @@ in text format, or imaging spectrometer data cubes.
 
 License
 -------
+
 Free software: Apache License v2
 
 All images contained in any (sub-)directory of this repository are licensed under the CC0 license which can be found
