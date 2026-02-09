@@ -26,4 +26,4 @@ jobs:
           uv pip install -e .
       - name: Build and deploy docs
         run: |
-          mkdocs gh-deploy --force
+          uv run mkdocs gh-deploy --force
