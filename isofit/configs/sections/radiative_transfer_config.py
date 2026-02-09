@@ -360,7 +360,7 @@ class RadiativeTransferConfig(BaseConfigSection):
         """
 
         self._min_cos_i_type = float
-        self.min_cos_i = 0.3
+        self.min_cos_i = 0.0
         """
         float: Minimum cos(i) value used in LUT component calculations.  Only relevant
         if terrain_style is 'dem' and a 6 component model is used. This can avoid
