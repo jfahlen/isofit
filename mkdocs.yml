@@ -19,7 +19,6 @@ markdown_extensions:
 extra_css:
   - stylesheets/icons.css
 nav:
-  - About: about.md
   - Getting Started:
     - Installation: getting_started/installation.md
     - Quick Start (New Users): getting_started/quickstarts/srtmnet.md
