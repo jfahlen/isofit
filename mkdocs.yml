@@ -3,8 +3,6 @@ site_url: https://isofit.github.io/isofit/
 repo_name: isofit/isofit
 repo_url: https://github.com/isofit/isofit/
 docs_dir: docs/
-# theme:
-#   name: readthedocs
 theme:
   name: material
   theme:
@@ -30,9 +28,12 @@ theme:
     - navigation.instant
     - navigation.instant.prefetch
     - navigation.instant.progress
+    - navigation.expand
+    - navigation.path
 plugins:
   - search
   - mkapi
+  - social
 markdown_extensions:
   - attr_list
   - admonition
@@ -46,6 +47,13 @@ extra_css:
 extra:
   version:
     provider: mike
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
 nav:
   - Getting Started:
     - Installation: getting_started/installation.md
