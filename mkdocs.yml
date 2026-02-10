@@ -64,5 +64,5 @@ nav:
     - Contributing: developers/contributing.md
     - Documentation: developers/documentation.md
     - Testing: developers/testing.md
-  # - Reference:
-  #   - $api/isofit.***
+  - Reference:
+    - $api/isofit.***
