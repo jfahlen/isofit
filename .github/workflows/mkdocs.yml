@@ -27,7 +27,7 @@ jobs:
         run: |
           uv sync --extra docs
           uv pip install -e .
-      - name: Deploy docs with mike
+      - name: Build and deploy docs
         run: |
           VERSION=$(uv run isofit --version)
           if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
