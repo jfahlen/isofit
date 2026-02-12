@@ -38,5 +38,6 @@ jobs:
             uv run mike deploy --push --update-aliases "$VERSION" latest
             uv run mike set-default --push latest
           else
-            uv run mike deploy --push dev
+            uv run mike deploy --push --update-aliases dev latest
+            uv run mike set-default --push latest
           fi
