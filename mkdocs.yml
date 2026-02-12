@@ -55,6 +55,7 @@ extra:
       find what they're searching for. With your consent, you're helping us to
       make our documentation better.
 nav:
+  - About: index.md
   - Getting Started:
     - Installation: getting_started/installation.md
     - Quick Start (New Users): getting_started/quickstarts/srtmnet.md
